@@ -22,7 +22,6 @@ class PartenaireRepository
     {
         $data = $request->all();
 
-        $partenaire = new Partenaire;
         $partenaire->libelle = $data['libelle'];
 
         $partenaire->save();
