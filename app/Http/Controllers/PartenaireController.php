@@ -30,12 +30,11 @@ class PartenaireController extends Controller
      */
     public function create()
     {
-        $produits = Partenaire::all();
+        $partenaires = Partenaire::all();
 
         if (Auth::user()->can('partenaire-create')) {
-            return view('partenaire.create', compact('produits'));
+            return view('partenaire.create', compact('partenaires'));
         }
-        // return view('partenaire.create', compact('produits'));
 
 
         abort(401);

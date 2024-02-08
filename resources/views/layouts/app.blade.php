@@ -37,6 +37,7 @@
 
         <!-- Page Content -->
         <a class="btn btn-primary ms-3 mt-3" href="{{ route('partenaire.index') }}">{{ 'Partenaires' }}</a>
+        <a class="btn btn-primary ms-3 mt-3" href="{{ route('actualite.index') }}">{{ 'Actualités' }}</a>
         @yield('content')
 
     </div>
