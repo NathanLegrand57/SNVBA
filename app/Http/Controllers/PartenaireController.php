@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Repositories\PartenaireRepository;
 use App\Http\Requests\PartenaireRequest;
+use App\Mail\UpdatePartenaire;
 use App\Models\Partenaire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 class PartenaireController extends Controller
@@ -63,15 +65,28 @@ class PartenaireController extends Controller
      */
     public function edit(Partenaire $partenaire)
     {
-        //
+        $partenaires = Partenaire::all();
+
+        if (Auth::user()->can('partenaire-update')) {
+            return view('partenaire.edit', compact('partenaire', 'partenaires'));
+        }
+
+        abort(401);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Partenaire $partenaire)
+    public function update(PartenaireRequest $request, Partenaire $partenaire)
     {
-        //
+        $this->partenaireRepository->update($request, $partenaire);
+
+        $email = (new UpdatePartenaire($partenaire))->with([
+            'partenaire' => $partenaire,
+        ]);
+        Mail::to(Auth::user()->email)->send($email);
+
+        return redirect()->route('partenaire.index');
     }
 
     /**

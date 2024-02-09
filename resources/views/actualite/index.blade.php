@@ -6,8 +6,8 @@
         @forelse ($actualites as $actualite)
             <div class="card m-3">
                 <div class="card-body">
-                    <h5 class="card-title">{{ 'Titre de l\'actualite' }} : {{ $actualite->titre }}</h5>
-                    <p class="card-title">{{ 'TContenu de l\'actualite' }} : {{ $actualite->contenu }}</p>
+                    <h5 class="card-title">{{ 'Titre de l\'actualité' }} : {{ $actualite->titre }}</h5>
+                    <p class="card-title">{{ 'Contenu de l\'actualité' }} : {{ $actualite->contenu }}</p>
                     @can('actualite-update')
                         <x-update-button property="actualite" :model="$actualite" />
                     @endcan
