@@ -22,6 +22,7 @@ class PartenaireRequest extends FormRequest
     {
         return [
             'libelle' => 'required|max:100',
+            'email' => 'required|max:100',
         ];
     }
 }

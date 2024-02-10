@@ -23,7 +23,7 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+        {{-- @include('layouts.navigation') --}}
 
 
         <!-- Page Heading -->
@@ -38,9 +38,8 @@
         <!-- Page Content -->
         <a class="btn btn-primary ms-3 mt-3" href="{{ route('partenaire.index') }}">{{ 'Partenaires' }}</a>
         <a class="btn btn-primary ms-3 mt-3" href="{{ route('actualite.index') }}">{{ 'Actualités' }}</a>
-        @yield('content')
-
     </div>
+    @yield('content')
 </body>
 
 </html>

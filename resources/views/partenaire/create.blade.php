@@ -12,6 +12,10 @@
             </div>
 
             <div class="form-group">
+                <x-input-email property="email" maxlength="100" label="{{ 'Adresse mail' }}" />
+            </div>
+
+            <div class="form-group">
                 <input type="submit" value="{{ 'Valider' }}" class="btn btn-success mt-3">
             </div>
 

@@ -9,10 +9,19 @@
             @method('put')
 
             <div>
-                <label for="contenu">Libellé</label><br />
+                <label for="libelle">Libellé</label><br />
                 <input class="form-control" type="texte" name="libelle" id="libelle"
                     value="{{ old('libelle', $partenaire->libelle) }}" required maxlength="100">
                 @error('libelle')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div>
+                <label for="email">Adresse mail</label><br />
+                <input class="form-control" type="email" name="email" id="email"
+                    value="{{ old('email', $partenaire->email) }}" required maxlength="100">
+                @error('email')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>

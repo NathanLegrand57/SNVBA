@@ -15,6 +15,7 @@ class UpdatePartenaire extends Mailable
     use Queueable, SerializesModels;
 
     public $partenaire;
+
     /**
      * Create a new message instance.
      */

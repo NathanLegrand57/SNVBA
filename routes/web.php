@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PartenaireController::class, 'index']);
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

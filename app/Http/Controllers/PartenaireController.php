@@ -84,7 +84,7 @@ class PartenaireController extends Controller
         $email = (new UpdatePartenaire($partenaire))->with([
             'partenaire' => $partenaire,
         ]);
-        Mail::to(Auth::user()->email)->send($email);
+        Mail::to($partenaire->email)->send(new UpdatePartenaire($partenaire));
 
         return redirect()->route('partenaire.index');
     }

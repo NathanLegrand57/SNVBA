@@ -14,6 +14,7 @@ class PartenaireRepository
 
         $partenaire = new Partenaire;
         $partenaire->libelle = $data['libelle'];
+        $partenaire->email = $data['email'];
 
         $partenaire->save();
     }
@@ -23,6 +24,7 @@ class PartenaireRepository
         $data = $request->all();
 
         $partenaire->libelle = $data['libelle'];
+        $partenaire->email = $data['email'];
 
         $partenaire->save();
     }
