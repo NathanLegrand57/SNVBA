@@ -8,16 +8,16 @@ class ActualiteRepository
 {
     protected $actualite;
 
-    // public function store($request)
-    // {
-    // $data = $request->all();
+    public function store($request)
+    {
+    $data = $request->all();
 
-    // $actualite = new Actualite;
-    // $actualite->titre = $data['titre'];
-    // $actualite->contenu = $data['contenu'];
+    $actualite = new Actualite;
+    $actualite->titre = $data['titre'];
+    $actualite->contenu = $data['contenu'];
 
-    // $actualite->save();
-    // }
+    $actualite->save();
+    }
 
     public function update($request, $actualite)
     {

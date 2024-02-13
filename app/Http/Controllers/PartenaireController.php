@@ -46,7 +46,7 @@ class PartenaireController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PartenaireRequest $request, Partenaire $partenaire)
+    public function store(PartenaireRequest $request)
     {
         $this->partenaireRepository->store($request);
         Mail::to('admin@gmail.com')->send(new SuggestUpdatePartenaire($partenaire));
