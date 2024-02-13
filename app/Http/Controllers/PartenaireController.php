@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Repositories\PartenaireRepository;
 use App\Http\Requests\PartenaireRequest;
+use App\Mail\SuggestUpdatePartenaire;
 use App\Mail\UpdatePartenaire;
 use App\Models\Partenaire;
 use Illuminate\Http\Request;
@@ -48,6 +49,7 @@ class PartenaireController extends Controller
     public function store(PartenaireRequest $request, Partenaire $partenaire)
     {
         $this->partenaireRepository->store($request);
+        Mail::to('admin@gmail.com')->send(new SuggestUpdatePartenaire($partenaire));
         return redirect()->route('partenaire.index');
 
     }
@@ -94,6 +96,10 @@ class PartenaireController extends Controller
      */
     public function destroy(Partenaire $partenaire)
     {
-        //
+        if (Auth::user()->can('partenaire-delete')) {
+            $partenaire->delete();
+            return redirect()->route('partenaire.index');
+        }
+        abort(401);
     }
 }
