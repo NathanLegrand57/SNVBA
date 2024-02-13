@@ -3,6 +3,9 @@
 @section('content')
 
     <body>
+        @can('actualite-create')
+            <x-create-button property="actualite" />
+        @endcan
         @forelse ($actualites as $actualite)
             <div class="card m-3">
                 <div class="card-body">

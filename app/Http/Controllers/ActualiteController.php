@@ -28,7 +28,14 @@ class ActualiteController extends Controller
      */
     public function create()
     {
-        //
+        $actualites = Actualite::all();
+
+        if (Auth::user()->can('actualite-create')) {
+            return view('actualite.create', compact('actualites'));
+        }
+
+
+        abort(401);
     }
 
     /**
@@ -36,7 +43,8 @@ class ActualiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->actualiteRepository->store($request);
+        return redirect()->route('actualite.index');
     }
 
     /**
